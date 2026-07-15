@@ -10,13 +10,13 @@ export function SiteFooter() {
           <p>{siteConfig.tagline}</p>
         </div>
         <div className="flex flex-wrap gap-3">
-          <a className="nav-link rounded-full border border-border bg-white px-4 py-2 hover:border-accent/30" href={siteConfig.linkedInHref}>
+          <a className="nav-link rounded-full border border-border bg-card px-4 py-2 hover:border-accent/30" href={siteConfig.linkedInHref}>
             LinkedIn
           </a>
-          <a className="nav-link rounded-full border border-border bg-white px-4 py-2 hover:border-accent/30" href={siteConfig.emailHref}>
+          <a className="nav-link rounded-full border border-border bg-card px-4 py-2 hover:border-accent/30" href={siteConfig.emailHref}>
             Email
           </a>
-          <a className="nav-link rounded-full border border-border bg-white px-4 py-2 hover:border-accent/30" href={siteConfig.resumeHref}>
+          <a className="nav-link rounded-full border border-border bg-card px-4 py-2 hover:border-accent/30" href={siteConfig.resumeHref}>
             Resume PDF
           </a>
         </div>

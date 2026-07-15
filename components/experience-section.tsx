@@ -49,12 +49,12 @@ export function ExperienceSection({ experiences }: { experiences: Experience[] }
           const isActive = activeFilter === filter;
           const activeClass =
             filter === "All"
-              ? "border-foreground bg-foreground text-white"
+              ? "border-foreground bg-foreground text-background"
               : `${filterAccent[filter]} border`;
           const inactiveClass =
             filter === "All"
               ? "border-border bg-background text-foreground"
-              : "border-border bg-white text-muted hover:text-foreground";
+              : "border-border bg-card text-muted hover:text-foreground";
 
           return (
             <button
@@ -77,7 +77,7 @@ export function ExperienceSection({ experiences }: { experiences: Experience[] }
           return (
             <article
               key={experience.slug}
-              className="rounded-2xl border border-border bg-white px-5 py-4 shadow-card transition-shadow hover:shadow-card-hover"
+              className="rounded-2xl border border-border bg-card px-5 py-4 shadow-card transition-shadow hover:shadow-card-hover"
             >
               <button
                 type="button"

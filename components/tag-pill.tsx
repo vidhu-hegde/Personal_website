@@ -10,7 +10,7 @@ type TagPillProps = {
 export function TagPill({ label, active = false, asButton = false, onClick }: TagPillProps) {
   const className = cn(
     "inline-flex items-center rounded-full border px-3 py-1.5 text-sm transition-colors",
-    active ? "border-accent/20 bg-accent-soft text-accent-strong" : "border-border bg-white text-muted hover:text-foreground",
+    active ? "border-accent/20 bg-accent-soft text-accent-strong" : "border-border bg-card text-muted hover:text-foreground",
   );
 
   if (asButton) {

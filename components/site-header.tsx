@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 import { Container } from "@/components/container";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { siteConfig } from "@/lib/metadata";
 import { cn } from "@/lib/utils";
 
@@ -28,37 +29,44 @@ export function SiteHeader() {
             Vidhatri Hegde
           </Link>
 
-          <button
-            type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-white text-foreground md:hidden"
-            onClick={() => setIsOpen((value) => !value)}
-            aria-expanded={isOpen}
-            aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
-          >
-            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+          <div className="hidden items-center gap-3 md:flex">
+            <nav aria-label="Primary navigation">
+              <ul className="flex items-center gap-2 text-sm text-muted">
+                {navItems.map((item) => {
+                  const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
 
-          <nav aria-label="Primary navigation" className="hidden md:block">
-            <ul className="flex items-center gap-2 text-sm text-muted">
-              {navItems.map((item) => {
-                const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
+                  return (
+                    <li key={item.href}>
+                      <Link
+                        href={item.href}
+                        className={cn(
+                          "nav-link inline-flex rounded-full px-4 py-2 transition-colors",
+                          isActive ? "bg-accent-soft text-accent-strong" : "hover:bg-card hover:text-foreground",
+                        )}
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </nav>
 
-                return (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className={cn(
-                        "nav-link inline-flex rounded-full px-4 py-2 transition-colors",
-                        isActive ? "bg-accent-soft text-accent-strong" : "hover:bg-white hover:text-foreground",
-                      )}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </nav>
+            <ThemeToggle className="h-10 px-4" />
+          </div>
+
+          <div className="flex items-center gap-2 md:hidden">
+            <ThemeToggle className="h-11 w-11" />
+            <button
+              type="button"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-card text-foreground"
+              onClick={() => setIsOpen((value) => !value)}
+              aria-expanded={isOpen}
+              aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+            >
+              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
         </div>
 
         {isOpen ? (
@@ -76,7 +84,7 @@ export function SiteHeader() {
                         "nav-link flex rounded-2xl border px-4 py-3 text-sm transition-colors",
                         isActive
                           ? "border-accent/20 bg-accent-soft text-accent-strong"
-                          : "border-border bg-white text-foreground",
+                          : "border-border bg-card text-foreground",
                       )}
                     >
                       {item.label}

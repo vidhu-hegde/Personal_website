@@ -121,94 +121,99 @@ export function HomeLanding() {
   const currentWord = words[wordIndex];
 
   return (
-    <div className="min-h-screen overflow-hidden bg-white">
+    <div className="min-h-screen overflow-hidden bg-background">
       <h2 className="sr-only">
         Landing page with a two column hero, about text on the left and floating avatar animation on the right,
         ending in a get in touch card section
       </h2>
 
-      <PortfolioTopBar contactHref="#get-in-touch" />
+      <PortfolioTopBar
+        contactHref="#get-in-touch"
+        className="bg-card border-b-8 border-b-divider"
+      />
 
-      <div className="mx-auto grid min-h-[calc(100vh-56px)] max-w-site gap-14 px-6 py-14 sm:py-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:py-24 xl:min-h-[calc(100vh-64px)] xl:gap-20">
-        <div className="min-w-0 space-y-8">
-          <div className="space-y-5">
-            <p className="text-sm font-semibold tracking-[0.08em] text-sky-600 uppercase">About</p>
-            <h1 className="max-w-3xl text-5xl font-medium leading-[1.04] tracking-[-0.06em] text-foreground sm:text-6xl xl:text-7xl">
-              Clear plans, built with{" "}
-              <span
-                className={`inline-block rounded-full px-5 py-2 transition-colors duration-300 sm:px-6 sm:py-2.5 ${currentWord.background} ${currentWord.foreground}`}
-              >
-                {currentWord.text}
-              </span>
-            </h1>
-            <p className="max-w-2xl text-lg leading-9 text-muted sm:text-xl">
-              Hi! I&apos;m Vidhatri, a Computer Science/ Eng Management student who likes turning messy ideas into clear
-              plans. I&apos;ve worked across engineering, research, and leadership, and I&apos;m happiest when I&apos;m
-              connecting people, solving problems, and making complicated things feel a little simpler.
-            </p>
-            <p className="text-lg text-slate-500 sm:text-xl">Penn State CS → Cornell MEM</p>
+      <div className="bg-linear-to-b from-[#d8c8b8] via-[#e4d6c8] to-[#f2ebe4] dark:from-[#3a2f27] dark:via-[#2e251f] dark:to-[#1f1915]">
+        <div className="mx-auto grid min-h-[calc(100vh-56px)] max-w-site gap-14 px-6 py-14 sm:py-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:py-24 xl:min-h-[calc(100vh-64px)] xl:gap-20">
+          <div className="min-w-0 space-y-8">
+            <div className="space-y-5">
+              <p className="text-sm font-semibold tracking-[0.08em] text-sky-600 uppercase">About</p>
+              <h1 className="max-w-3xl text-5xl font-medium leading-[1.04] tracking-[-0.06em] text-foreground sm:text-6xl xl:text-7xl">
+                Clear plans, built with{" "}
+                <span
+                  className={`inline-block rounded-full px-5 py-2 transition-colors duration-300 sm:px-6 sm:py-2.5 ${currentWord.background} ${currentWord.foreground}`}
+                >
+                  {currentWord.text}
+                </span>
+              </h1>
+              <p className="max-w-2xl text-lg leading-9 text-muted sm:text-xl">
+                Hi! I&apos;m Vidhatri, a Computer Science/ Eng Management student who likes turning messy ideas into
+                clear plans. I&apos;ve worked across engineering, research, and leadership, and I&apos;m happiest when
+                I&apos;m connecting people, solving problems, and making complicated things feel a little simpler.
+              </p>
+              <p className="text-lg text-muted sm:text-xl">Penn State CS → Cornell MEM</p>
+            </div>
+
+            <div className="flex flex-col gap-4 sm:flex-row">
+              <Link href="/projects" className="button-primary min-h-14 px-7 text-base">
+                See my work
+              </Link>
+              <a href="#get-in-touch" className="button-secondary min-h-14 px-7 text-base">
+                Get in touch
+              </a>
+            </div>
           </div>
 
-          <div className="flex flex-col gap-4 sm:flex-row">
-            <Link href="/projects" className="button-primary min-h-14 px-7 text-base">
-              See my work
-            </Link>
-            <a href="#get-in-touch" className="button-secondary min-h-14 px-7 text-base">
-              Get in touch
-            </a>
-          </div>
-        </div>
+          <div className="grid min-w-0 grid-cols-2 justify-items-center gap-8 sm:gap-10">
+            {heroIcons.map((item) => {
+              const Icon = item.icon;
+              const circleClassName = `floating-circle flex h-[92px] w-[92px] items-center justify-center rounded-full border-[3px] sm:h-[110px] sm:w-[110px] ${item.background} ${item.border}`;
+              const iconClassName = `h-9 w-9 sm:h-10 sm:w-10 ${item.color}`;
+              const label = "label" in item ? item.label : undefined;
 
-        <div className="grid min-w-0 grid-cols-2 justify-items-center gap-8 sm:gap-10">
-          {heroIcons.map((item) => {
-            const Icon = item.icon;
-            const circleClassName = `floating-circle flex h-[92px] w-[92px] items-center justify-center rounded-full border-[3px] sm:h-[110px] sm:w-[110px] ${item.background} ${item.border}`;
-            const iconClassName = `h-9 w-9 sm:h-10 sm:w-10 ${item.color}`;
-            const label = "label" in item ? item.label : undefined;
+              if ("href" in item) {
+                const isExternal = "external" in item && item.external;
 
-            if ("href" in item) {
-              const isExternal = "external" in item && item.external;
+                return (
+                  <a
+                    key={item.delay}
+                    href={item.href}
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noreferrer" : undefined}
+                    aria-label={item.label}
+                    title={item.label}
+                    className="group relative inline-flex cursor-pointer flex-col items-center"
+                  >
+                    <div
+                      className={`${circleClassName} transition-transform duration-200 group-hover:-translate-y-1 group-hover:shadow-card-hover group-focus-visible:-translate-y-1 group-focus-visible:shadow-card-hover`}
+                      style={{ animationDelay: item.delay }}
+                    >
+                      <Icon className={iconClassName} aria-hidden="true" />
+                    </div>
+                    <span className="pointer-events-none absolute -bottom-8 rounded-full border border-border bg-card px-3 py-1 text-xs text-foreground opacity-0 shadow-card transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
+                      {item.label}
+                    </span>
+                  </a>
+                );
+              }
 
               return (
-                <a
-                  key={item.delay}
-                  href={item.href}
-                  target={isExternal ? "_blank" : undefined}
-                  rel={isExternal ? "noreferrer" : undefined}
-                  aria-label={item.label}
-                  title={item.label}
-                  className="group relative inline-flex cursor-pointer flex-col items-center"
-                >
-                  <div
-                    className={`${circleClassName} transition-transform duration-200 group-hover:-translate-y-1 group-hover:shadow-card-hover group-focus-visible:-translate-y-1 group-focus-visible:shadow-card-hover`}
-                    style={{ animationDelay: item.delay }}
-                  >
+                <div key={item.delay} className="relative inline-flex flex-col items-center">
+                  <div className={circleClassName} style={{ animationDelay: item.delay }}>
                     <Icon className={iconClassName} aria-hidden="true" />
                   </div>
-                  <span className="pointer-events-none absolute -bottom-8 rounded-full border border-border bg-white px-3 py-1 text-xs text-foreground opacity-0 shadow-card transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
-                    {item.label}
-                  </span>
-                </a>
-              );
-            }
-
-            return (
-              <div key={item.delay} className="relative inline-flex flex-col items-center">
-                <div className={circleClassName} style={{ animationDelay: item.delay }}>
-                  <Icon className={iconClassName} aria-hidden="true" />
+                  {label ? (
+                    <span className="pointer-events-none absolute -bottom-8 rounded-full border border-border bg-card px-3 py-1 text-xs text-foreground opacity-0 shadow-card">
+                      {label}
+                    </span>
+                  ) : null}
                 </div>
-                {label ? (
-                  <span className="pointer-events-none absolute -bottom-8 rounded-full border border-border bg-white px-3 py-1 text-xs text-foreground opacity-0 shadow-card">
-                    {label}
-                  </span>
-                ) : null}
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
 
-      <div id="get-in-touch" className="bg-stone-50 px-6 py-9 sm:py-12">
+      <div id="get-in-touch" className="bg-background px-6 py-9 sm:py-12">
         <div className="mx-auto max-w-site">
           <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
             <h2 className="text-2xl font-semibold tracking-[-0.03em] text-foreground">Get in touch</h2>
@@ -231,7 +236,7 @@ export function HomeLanding() {
                 <a
                   key={card.label}
                   href={card.href}
-                  className="surface-link rounded-xl border border-border bg-white p-4 shadow-none"
+                  className="surface-link rounded-xl border border-border bg-card p-4 shadow-none"
                   target={isExternal ? "_blank" : undefined}
                   rel={isExternal ? "noreferrer" : undefined}
                 >

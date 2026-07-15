@@ -21,7 +21,7 @@ export default function ResumePage() {
         />
 
         <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_320px]">
-          <article className="rounded-2xl border border-border bg-white p-6 shadow-card sm:p-8">
+          <article className="rounded-2xl border border-border bg-card p-6 shadow-card sm:p-8">
             <p className="text-sm font-medium tracking-[0.12em] text-accent uppercase">Download</p>
             <p className="mt-4 max-w-2xl text-base leading-8 text-muted">
               This page links directly to the current PDF stored in <code>/public/resume.pdf</code>.
@@ -33,7 +33,7 @@ export default function ResumePage() {
             </div>
           </article>
 
-          <aside className="rounded-2xl border border-border bg-white p-6 shadow-card">
+          <aside className="rounded-2xl border border-border bg-card p-6 shadow-card">
             <p className="text-sm font-medium tracking-[0.12em] text-accent uppercase">Contact</p>
             <div className="mt-5 grid gap-3">
               <a href={siteConfig.linkedInHref} className="button-secondary justify-start">

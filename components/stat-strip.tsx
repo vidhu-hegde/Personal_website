@@ -14,7 +14,7 @@ const items = [
 
 export function StatStrip({ stats }: StatStripProps) {
   return (
-    <div className="grid gap-3 rounded-2xl border border-border bg-white p-4 shadow-card sm:grid-cols-3 sm:p-5">
+    <div className="grid gap-3 rounded-2xl border border-border bg-card p-4 shadow-card sm:grid-cols-3 sm:p-5">
       {items.map((item) => (
         <div key={item.key} className="rounded-xl border border-border/80 bg-background px-4 py-4">
           <p className="text-sm text-muted">{item.label}</p>

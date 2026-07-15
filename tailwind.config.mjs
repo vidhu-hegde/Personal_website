@@ -1,17 +1,21 @@
 /** @type {import('tailwindcss').Config} */
+const withOpacity = (variable) => `rgb(var(${variable}) / <alpha-value>)`;
+
 const config = {
+  darkMode: "class",
   content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./content/**/*.{ts,tsx}", "./lib/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        background: "#FAFAF9",
-        foreground: "#1A1A1A",
-        muted: "#666D78",
-        border: "#E7E5E4",
-        card: "#FFFFFF",
-        accent: "#5F6F87",
-        "accent-soft": "#E9EEF5",
-        "accent-strong": "#425166",
+        background: withOpacity("--color-background"),
+        foreground: withOpacity("--color-foreground"),
+        muted: withOpacity("--color-muted"),
+        border: withOpacity("--color-border"),
+        card: withOpacity("--color-card"),
+        divider: withOpacity("--color-divider"),
+        accent: withOpacity("--color-accent"),
+        "accent-soft": withOpacity("--color-accent-soft"),
+        "accent-strong": withOpacity("--color-accent-strong"),
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],

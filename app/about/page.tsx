@@ -28,7 +28,7 @@ export default function AboutPage() {
         />
 
         <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_360px]">
-          <div className="rounded-2xl border border-border bg-white p-6 shadow-card sm:p-8">
+          <div className="rounded-2xl border border-border bg-card p-6 shadow-card sm:p-8">
             <div className="space-y-5 prose-copy">
               <p>
                 I study computer science at Penn State and I am heading to Cornell University for the Master of
@@ -43,7 +43,7 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <aside className="rounded-2xl border border-border bg-white p-6 shadow-card">
+          <aside className="rounded-2xl border border-border bg-card p-6 shadow-card">
             <p className="text-sm font-medium tracking-[0.12em] text-accent uppercase">Education timeline</p>
             <div className="mt-5 space-y-5">
               <div className="rounded-xl border border-border bg-background p-4">
@@ -64,7 +64,7 @@ export default function AboutPage() {
 
         <div className="grid gap-5 lg:grid-cols-3">
           {Object.entries(skillGroups).map(([group, skills]) => (
-            <article key={group} className="rounded-2xl border border-border bg-white p-6 shadow-card">
+            <article key={group} className="rounded-2xl border border-border bg-card p-6 shadow-card">
               <p className="text-sm font-medium tracking-[0.12em] text-accent uppercase">{group}</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {skills.map((skill) => (
@@ -75,7 +75,7 @@ export default function AboutPage() {
           ))}
         </div>
 
-        <div className="rounded-2xl border border-border bg-white p-6 shadow-card sm:p-8">
+        <div className="rounded-2xl border border-border bg-card p-6 shadow-card sm:p-8">
           <p className="text-sm font-medium tracking-[0.12em] text-accent uppercase">Outside work</p>
           <p className="mt-4 max-w-3xl text-base leading-8 text-muted">
             Outside project work, I am drawn to food, travel, and Bollywood for basically the same reason I like good

@@ -13,7 +13,7 @@ export const metadata: Metadata = buildMetadata({
 
 export default function RankedPage() {
   return (
-    <section className="min-h-screen bg-white">
+    <section className="min-h-screen bg-background">
       <PortfolioTopBar activeTab="experience" />
 
       <div className="mx-auto max-w-site px-6 py-12 sm:py-16">

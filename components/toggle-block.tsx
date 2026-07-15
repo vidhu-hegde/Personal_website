@@ -11,7 +11,7 @@ export function ToggleBlock({ title, children, defaultOpen = true }: ToggleBlock
   return (
     <details
       open={defaultOpen}
-      className="group rounded-2xl border border-border bg-white p-5 shadow-card [&_summary::-webkit-details-marker]:hidden"
+      className="group rounded-2xl border border-border bg-card p-5 shadow-card [&_summary::-webkit-details-marker]:hidden"
     >
       <summary className="toggle-summary flex cursor-pointer list-none items-center justify-between gap-4">
         <span className="text-lg font-medium tracking-[-0.02em] text-foreground">{title}</span>

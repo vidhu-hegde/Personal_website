@@ -1,6 +1,36 @@
 @config "../tailwind.config.mjs";
 @import "tailwindcss";
 
+:root {
+  --color-background: 250 250 249;
+  --color-foreground: 26 26 26;
+  --color-muted: 102 109 120;
+  --color-border: 231 229 228;
+  --color-card: 255 255 255;
+  --color-divider: 255 255 255;
+  --color-accent: 95 111 135;
+  --color-accent-soft: 233 238 245;
+  --color-accent-strong: 66 81 102;
+  --page-radial: 233 238 245;
+  --page-overlay: 255 255 255;
+  --page-base: 250 250 249;
+}
+
+html.dark {
+  --color-background: 18 20 24;
+  --color-foreground: 240 242 246;
+  --color-muted: 164 171 181;
+  --color-border: 61 67 77;
+  --color-card: 29 33 39;
+  --color-divider: 11 13 16;
+  --color-accent: 144 164 191;
+  --color-accent-soft: 52 61 74;
+  --color-accent-strong: 225 231 241;
+  --page-radial: 76 88 109;
+  --page-overlay: 24 27 33;
+  --page-base: 17 19 23;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -19,10 +49,10 @@ body {
   margin: 0;
   min-width: 320px;
   background:
-    radial-gradient(circle at top left, rgba(233, 238, 245, 0.85), transparent 30%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0)),
-    #fafaf9;
-  color: #1a1a1a;
+    radial-gradient(circle at top left, rgb(var(--page-radial) / 0.85), transparent 30%),
+    linear-gradient(180deg, rgb(var(--page-overlay) / 0.82), rgb(var(--page-overlay) / 0)),
+    rgb(var(--page-base));
+  color: rgb(var(--color-foreground));
   font-family: var(--font-inter), sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -39,7 +69,7 @@ img {
 }
 
 ::selection {
-  background: rgba(95, 111, 135, 0.18);
+  background: rgb(var(--color-accent) / 0.18);
 }
 
 .page-shell {
@@ -64,25 +94,25 @@ img {
 }
 
 .button-primary {
-  background: #5f6f87;
-  color: #ffffff;
-  box-shadow: 0 8px 18px rgba(95, 111, 135, 0.18);
+  background: rgb(var(--color-accent));
+  color: rgb(var(--color-background));
+  box-shadow: 0 8px 18px rgb(var(--color-accent) / 0.18);
 }
 
 .button-primary:hover {
   transform: translateY(-1px);
-  background: #425166;
+  background: rgb(var(--color-accent-strong));
 }
 
 .button-secondary {
-  border: 1px solid #e7e5e4;
-  background: rgba(255, 255, 255, 0.9);
-  color: #1a1a1a;
+  border: 1px solid rgb(var(--color-border));
+  background: rgb(var(--color-card) / 0.9);
+  color: rgb(var(--color-foreground));
 }
 
 .button-secondary:hover {
   transform: translateY(-1px);
-  border-color: #cbd5e1;
+  border-color: rgb(var(--color-accent) / 0.35);
 }
 
 .button-primary:focus-visible,
@@ -94,7 +124,7 @@ input:focus-visible,
 select:focus-visible,
 button:focus-visible,
 a:focus-visible {
-  outline: 2px solid #5f6f87;
+  outline: 2px solid rgb(var(--color-accent));
   outline-offset: 2px;
 }
 
@@ -132,11 +162,11 @@ a:focus-visible {
 }
 
 .prose-copy {
-  color: #4b5563;
+  color: rgb(var(--color-muted));
   font-size: 1rem;
   line-height: 1.8;
 }
 
 .prose-copy strong {
-  color: #1a1a1a;
+  color: rgb(var(--color-foreground));
 }

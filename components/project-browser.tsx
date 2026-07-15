@@ -61,7 +61,7 @@ export function ProjectBrowser({ projects, mode = "ranked", maxItems }: ProjectB
 
   return (
     <div className="space-y-6">
-      <div className="rounded-2xl border border-border bg-white p-3 shadow-card">
+      <div className="rounded-2xl border border-border bg-card p-3 shadow-card">
         <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
           <label className="flex min-w-0 flex-1 items-center gap-3 rounded-xl border border-border bg-background px-4 py-3">
             <Search className="h-4 w-4 text-muted" />
@@ -117,7 +117,7 @@ export function ProjectBrowser({ projects, mode = "ranked", maxItems }: ProjectB
           ))}
         </div>
       ) : (
-        <div className="rounded-2xl border border-dashed border-border bg-white p-8 text-sm text-muted">
+        <div className="rounded-2xl border border-dashed border-border bg-card p-8 text-sm text-muted">
           No projects match that combination yet.
         </div>
       )}

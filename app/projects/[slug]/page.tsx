@@ -45,7 +45,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
   return (
     <section className="py-10 sm:py-14">
       <Container className="space-y-8">
-        <div className="space-y-6 rounded-[28px] border border-border bg-white p-6 shadow-card sm:p-8">
+        <div className="space-y-6 rounded-[28px] border border-border bg-card p-6 shadow-card sm:p-8">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
             <div className="space-y-3">
               <Link href="/projects" className="text-sm text-accent hover:text-accent-strong">
