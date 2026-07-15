@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import {
-  BarChart3,
   Briefcase,
   Code2,
   ExternalLink,
@@ -11,24 +10,61 @@ import {
   GraduationCap,
   Mail,
   Plane,
+  UtensilsCrossed,
   Users,
 } from "lucide-react";
 
 import { PortfolioTopBar } from "@/components/portfolio-top-bar";
+import { siteConfig } from "@/lib/metadata";
 
 const words = [
   { text: "curiosity", background: "bg-rose-100", foreground: "text-rose-900" },
   { text: "hustle", background: "bg-emerald-100", foreground: "text-emerald-950" },
   { text: "empathy", background: "bg-sky-100", foreground: "text-sky-950" },
   { text: "data", background: "bg-amber-100", foreground: "text-amber-950" },
-  { text: "chai", background: "bg-lime-100", foreground: "text-lime-950" },
+  { text: "matcha", background: "bg-lime-100", foreground: "text-lime-950" },
 ] as const;
 
 const heroIcons = [
-  { icon: Briefcase, background: "bg-sky-100", border: "border-sky-500", color: "text-sky-900", delay: "0ms" },
-  { icon: Code2, background: "bg-emerald-100", border: "border-emerald-500", color: "text-emerald-900", delay: "300ms" },
-  { icon: BarChart3, background: "bg-orange-100", border: "border-orange-500", color: "text-orange-900", delay: "600ms" },
-  { icon: Users, background: "bg-rose-100", border: "border-rose-500", color: "text-rose-900", delay: "900ms" },
+  {
+    icon: Briefcase,
+    background: "bg-sky-100",
+    border: "border-sky-500",
+    color: "text-sky-900",
+    delay: "0ms",
+    href: "/ranked",
+    label: "Experience",
+  },
+  {
+    icon: Code2,
+    background: "bg-emerald-100",
+    border: "border-emerald-500",
+    color: "text-emerald-900",
+    delay: "300ms",
+    href: "https://github.com/vidhu-hegde",
+    label: "GitHub",
+    external: true,
+  },
+  {
+    icon: UtensilsCrossed,
+    background: "bg-orange-100",
+    border: "border-orange-500",
+    color: "text-orange-900",
+    delay: "600ms",
+    href: "https://TODO-beli-link.example.com",
+    label: "Beli",
+    external: true,
+  },
+  {
+    icon: Users,
+    background: "bg-rose-100",
+    border: "border-rose-500",
+    color: "text-rose-900",
+    delay: "900ms",
+    href: "https://instagram.com/TODO",
+    label: "Instagram",
+    external: true,
+  },
   { icon: Plane, background: "bg-violet-100", border: "border-violet-500", color: "text-violet-900", delay: "1200ms" },
   {
     icon: GraduationCap,
@@ -36,8 +72,13 @@ const heroIcons = [
     border: "border-amber-500",
     color: "text-amber-900",
     delay: "1500ms",
+    href: "https://www.cornell.edu",
+    label: "Cornell",
+    external: true,
   },
 ] as const;
+
+// TODO: Replace the Beli and Instagram placeholder URLs with Vidhatri's real profile links.
 
 const contactCards = [
   {
@@ -49,7 +90,7 @@ const contactCards = [
   {
     label: "LinkedIn",
     value: "@VidhatriHegde",
-    href: "https://www.linkedin.com/in/TODO",
+    href: "https://www.linkedin.com/in/vidhatrihegde/",
     icon: ExternalLink,
   },
   {
@@ -61,7 +102,7 @@ const contactCards = [
   {
     label: "Resume",
     value: "View PDF",
-    href: "/resume.pdf",
+    href: siteConfig.resumeHref,
     icon: FileText,
   },
 ] as const;
@@ -86,7 +127,7 @@ export function HomeLanding() {
         ending in a get in touch card section
       </h2>
 
-      <PortfolioTopBar activeTab="experience" contactHref="#get-in-touch" />
+      <PortfolioTopBar contactHref="#get-in-touch" />
 
       <div className="mx-auto grid min-h-[calc(100vh-56px)] max-w-site gap-14 px-6 py-14 sm:py-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:py-24 xl:min-h-[calc(100vh-64px)] xl:gap-20">
         <div className="min-w-0 space-y-8">
@@ -101,9 +142,9 @@ export function HomeLanding() {
               </span>
             </h1>
             <p className="max-w-2xl text-lg leading-9 text-muted sm:text-xl">
-              I&apos;m a computer science student who likes turning messy ideas into clear plans. I&apos;ve worked across
-              engineering, research, and leadership, and I&apos;m happiest connecting people and solving the problem
-              underneath the problem.
+              Hi! I&apos;m Vidhatri, a Computer Science/ Eng Management student who likes turning messy ideas into clear
+              plans. I&apos;ve worked across engineering, research, and leadership, and I&apos;m happiest when I&apos;m
+              connecting people, solving problems, and making complicated things feel a little simpler.
             </p>
             <p className="text-lg text-slate-500 sm:text-xl">Penn State CS → Cornell MEM</p>
           </div>
@@ -121,14 +162,46 @@ export function HomeLanding() {
         <div className="grid min-w-0 grid-cols-2 justify-items-center gap-8 sm:gap-10">
           {heroIcons.map((item) => {
             const Icon = item.icon;
+            const circleClassName = `floating-circle flex h-[92px] w-[92px] items-center justify-center rounded-full border-[3px] sm:h-[110px] sm:w-[110px] ${item.background} ${item.border}`;
+            const iconClassName = `h-9 w-9 sm:h-10 sm:w-10 ${item.color}`;
+            const label = "label" in item ? item.label : undefined;
+
+            if ("href" in item) {
+              const isExternal = "external" in item && item.external;
+
+              return (
+                <a
+                  key={item.delay}
+                  href={item.href}
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noreferrer" : undefined}
+                  aria-label={item.label}
+                  title={item.label}
+                  className="group relative inline-flex cursor-pointer flex-col items-center"
+                >
+                  <div
+                    className={`${circleClassName} transition-transform duration-200 group-hover:-translate-y-1 group-hover:shadow-card-hover group-focus-visible:-translate-y-1 group-focus-visible:shadow-card-hover`}
+                    style={{ animationDelay: item.delay }}
+                  >
+                    <Icon className={iconClassName} aria-hidden="true" />
+                  </div>
+                  <span className="pointer-events-none absolute -bottom-8 rounded-full border border-border bg-white px-3 py-1 text-xs text-foreground opacity-0 shadow-card transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
+                    {item.label}
+                  </span>
+                </a>
+              );
+            }
 
             return (
-              <div
-                key={item.delay}
-                className={`floating-circle flex h-[92px] w-[92px] items-center justify-center rounded-full border-[3px] sm:h-[110px] sm:w-[110px] ${item.background} ${item.border}`}
-                style={{ animationDelay: item.delay }}
-              >
-                <Icon className={`h-9 w-9 sm:h-10 sm:w-10 ${item.color}`} aria-hidden="true" />
+              <div key={item.delay} className="relative inline-flex flex-col items-center">
+                <div className={circleClassName} style={{ animationDelay: item.delay }}>
+                  <Icon className={iconClassName} aria-hidden="true" />
+                </div>
+                {label ? (
+                  <span className="pointer-events-none absolute -bottom-8 rounded-full border border-border bg-white px-3 py-1 text-xs text-foreground opacity-0 shadow-card">
+                    {label}
+                  </span>
+                ) : null}
               </div>
             );
           })}
@@ -145,7 +218,7 @@ export function HomeLanding() {
           </div>
 
           <p className="mb-5 max-w-[520px] text-sm leading-7 text-muted">
-            Graduating May 2026 and starting a Master&apos;s at Cornell this fall. Open to PM, TPM, and AI/data product roles
+            CS Grad and starting a Master&apos;s at Cornell this fall. Open to PM, TPM, and AI/data product roles
             in the meantime.
           </p>
 

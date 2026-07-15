@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { Briefcase, Lightbulb, Mail } from "lucide-react";
 
+import { siteConfig } from "@/lib/metadata";
+
 type PortfolioTopBarProps = {
   activeTab?: "experience" | "projects" | "contact";
   contactHref?: string;
@@ -13,7 +15,7 @@ const quickLinks = [
 ] as const;
 
 export function PortfolioTopBar({
-  activeTab = "experience",
+  activeTab,
   contactHref = "/#get-in-touch",
 }: PortfolioTopBarProps) {
   return (
@@ -41,7 +43,7 @@ export function PortfolioTopBar({
         })}
       </div>
 
-      <a href="/resume.pdf" className="button-primary h-8 px-3.5 text-xs sm:text-sm">
+      <a href={siteConfig.resumeHref} className="button-primary h-8 px-3.5 text-xs sm:text-sm">
         Resume
       </a>
     </div>

@@ -6,13 +6,14 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 import { Container } from "@/components/container";
+import { siteConfig } from "@/lib/metadata";
 import { cn } from "@/lib/utils";
 
 const navItems = [
   { href: "/ranked", label: "Experience" },
   { href: "/projects", label: "Projects" },
   { href: "/about", label: "About" },
-  { href: "/resume", label: "Resume" },
+  { href: siteConfig.resumeHref, label: "Resume" },
 ];
 
 export function SiteHeader() {
