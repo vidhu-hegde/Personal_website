@@ -1,0 +1,41 @@
+{
+  "name": "personal_website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Personal portfolio site for Vidhatri Hegde.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vidhu-hegde/Personal_website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vidhu-hegde/Personal_website/issues"
+  },
+  "homepage": "https://github.com/vidhu-hegde/Personal_website#readme",
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.3.2",
+    "framer-motion": "^12.42.2",
+    "lucide-react": "^1.24.0",
+    "next": "^16.2.10",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "tailwindcss": "^4.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.2.10",
+    "typescript": "^6.0.3"
+  }
+}
