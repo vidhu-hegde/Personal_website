@@ -37,7 +37,7 @@ export function ExperienceSection({ experiences }: { experiences: Experience[] }
   const [openSlug, setOpenSlug] = useState<string | null>(experiences[0]?.slug ?? null);
 
   const visibleExperiences = experiences.filter((experience) =>
-    activeFilter === "All" ? true : experience.category === activeFilter,
+    activeFilter === "All" ? true : experience.categories.includes(activeFilter),
   );
 
   return (
@@ -72,6 +72,7 @@ export function ExperienceSection({ experiences }: { experiences: Experience[] }
       <div className="flex flex-col gap-3">
         {visibleExperiences.map((experience) => {
           const isOpen = openSlug === experience.slug;
+          const primaryCategory = experience.categories[0];
 
           return (
             <article
@@ -85,9 +86,9 @@ export function ExperienceSection({ experiences }: { experiences: Experience[] }
                 aria-expanded={isOpen}
               >
                 <div
-                  className={`mt-0.5 flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-full border ${filterAccent[experience.category]}`}
+                  className={`mt-0.5 flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-full border ${filterAccent[primaryCategory]}`}
                 >
-                  <ExperienceIcon category={experience.category} />
+                  <ExperienceIcon category={primaryCategory} />
                 </div>
 
                 <div className="min-w-0 flex-1">
