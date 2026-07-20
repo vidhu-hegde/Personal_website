@@ -12,7 +12,11 @@ type SiteChromeProps = {
 
 export function SiteChrome({ children }: SiteChromeProps) {
   const pathname = usePathname();
-  const usesLandingChrome = pathname === "/" || pathname === "/ranked";
+  const usesLandingChrome =
+    pathname === "/" ||
+    pathname === "/ranked" ||
+    pathname === "/projects" ||
+    pathname.startsWith("/projects/");
 
   return (
     <>

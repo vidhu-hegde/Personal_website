@@ -129,7 +129,7 @@ export function HomeLanding() {
 
       <PortfolioTopBar
         contactHref="#get-in-touch"
-        className="bg-card border-b-8 border-b-divider"
+        className="bg-card"
       />
 
       <div className="bg-linear-to-b from-[#d8c8b8] via-[#e4d6c8] to-[#f2ebe4] dark:from-[#3a2f27] dark:via-[#2e251f] dark:to-[#1f1915]">

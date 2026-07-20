@@ -23,9 +23,6 @@ export default function RankedPage() {
             <h1 className="max-w-4xl text-4xl font-medium leading-tight tracking-[-0.05em] text-foreground sm:text-5xl lg:text-6xl">
               Roles, experiments, and leadership work that shaped how I build.
             </h1>
-            <p className="max-w-3xl text-lg leading-8 text-muted sm:text-xl">
-              A filterable view of the roles on my resume, expanded with the concrete work behind each line item.
-            </p>
           </div>
 
           <ExperienceSection experiences={experiences} />

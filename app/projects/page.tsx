@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 
-import { Container } from "@/components/container";
+import { PortfolioTopBar } from "@/components/portfolio-top-bar";
 import { ProjectCard } from "@/components/project-card";
-import { SectionHeader } from "@/components/section-header";
 import { projects } from "@/content/projects";
 import { buildMetadata } from "@/lib/metadata";
 
@@ -16,19 +15,25 @@ export const metadata: Metadata = buildMetadata({
 
 export default function ProjectsPage() {
   return (
-    <section className="py-10 sm:py-14">
-      <Container className="space-y-8">
-        <SectionHeader
-          eyebrow="Projects"
-          title="Projects and experiences, with more context than a resume bullet."
-          description="This page is less about ranking and more about the shape of the work: what the problem was, how I approached it, and what changed."
-        />
-        <div className="grid gap-4 md:grid-cols-2">
-          {recentProjects.map((project) => (
-            <ProjectCard key={project.slug} project={project} variant="project" />
-          ))}
+    <section className="min-h-screen bg-background">
+      <PortfolioTopBar activeTab="projects" />
+
+      <div className="mx-auto max-w-site px-6 py-12 sm:py-16">
+        <div className="space-y-8">
+          <div className="space-y-4">
+            <p className="text-sm font-semibold tracking-[0.08em] text-emerald-600 uppercase">Projects</p>
+            <h1 className="max-w-4xl text-4xl font-medium leading-tight tracking-[-0.05em] text-foreground sm:text-5xl lg:text-6xl">
+              A closer look at what I am building.
+            </h1>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2">
+            {recentProjects.map((project) => (
+              <ProjectCard key={project.slug} project={project} variant="project" />
+            ))}
+          </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

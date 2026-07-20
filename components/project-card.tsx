@@ -13,6 +13,7 @@ type ProjectCardProps = {
 
 export function ProjectCard({ project, variant = "ranked" }: ProjectCardProps) {
   const hasPlaceholderCopy = Boolean(project.placeholderFields?.length);
+  const hasLinks = Boolean(project.links?.length);
 
   return (
     <Link
@@ -38,13 +39,17 @@ export function ProjectCard({ project, variant = "ranked" }: ProjectCardProps) {
         ))}
       </div>
 
-      <div className={cn("mt-6 space-y-4 border-t border-border pt-5", variant === "project" ? "block" : "")}>
+      <div className={cn("mt-6 space-y-4 border-t border-border pt-5")}>
         <div>
           <p className="text-xs font-medium tracking-[0.14em] text-muted uppercase">
-            {variant === "project" ? "Situation" : "Hot take"}
+            {variant === "project" ? "Writeup preview" : "Hot take"}
           </p>
           <p className="mt-2 text-sm leading-6 text-muted">
-            {variant === "project" ? project.problem : project.oneLiner}
+            {variant === "project"
+              ? hasLinks
+                ? `${project.problem} This page also has space for ${project.links?.length} attached resource${project.links?.length === 1 ? "" : "s"}.`
+                : `${project.problem} This page also has space for GitHub, PRD, demo, or deck links.`
+              : project.oneLiner}
           </p>
         </div>
 
@@ -56,7 +61,7 @@ export function ProjectCard({ project, variant = "ranked" }: ProjectCardProps) {
       </div>
 
       <div className="mt-6 flex items-center justify-between border-t border-border pt-5 text-sm text-muted">
-        <span>{variant === "project" ? "Open project details" : "Open ranked notes"}</span>
+        <span>{variant === "project" ? "Open project writeup" : "Open ranked notes"}</span>
         <span aria-hidden="true" className="text-accent">
           ↗
         </span>
