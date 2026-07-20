@@ -23,92 +23,32 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "advanced-vehicle-team",
-    title: "Advanced Vehicle Team",
-    org: "Penn State Advanced Vehicle Team",
-    dateRange: "January 2026-Present",
-    tags: ["PM", "Technical", "Leadership"],
-    score: 9.1,
-    oneLiner: "My favorite kind of chaos: ambitious hardware, too many dependencies, and a deadline that does not move.",
+    slug: "portfolio-website",
+    title: "Portfolio Website",
+    org: "Independent build",
+    dateRange: "Summer 2026",
+    tags: ["Technical"],
+    score: 9.0,
+    oneLiner:
+      "A personal website I am shaping to feel more thoughtful and useful than a static resume page.",
     problem:
-      "The team was juggling parallel engineering workstreams, safety requirements, and integration risks without a consistent shared view of what had to happen when.",
+      "I wanted one place that could hold my experience, projects, and writing in a way that feels more personal than a PDF but still easy to scan.",
     approach:
-      "I treated the project like an operating system problem: clarify ownership, map dependencies, set a planning cadence, and make blockers visible before they become last-minute surprises.",
+      "I treated the site like a product and design exercise: simplify the structure, make each section easier to browse, and create room for deeper writeups when a project deserves more context.",
     whatBuilt:
-      "A semester roadmap, sprint planning rhythm, weekly standups, progress tracking structure, and recurring integration meetings that connected subteams instead of letting them drift in parallel.",
+      "A Next.js portfolio with a custom landing page, experience cards, a project showcase, theme toggle support, and dedicated detail pages for longer project writeups.",
     impact:
-      "Cross-team visibility improved, work could be escalated earlier, and the team made steadier progress toward completing deliverables before the final competition deadline.",
+      "The site now feels more like an actual portfolio instead of a list of sections, and it creates a cleaner place to keep building project stories over time.",
     reflection:
-      "I would tighten the feedback loop between roadmap planning and subsystem testing earlier in the semester so integration risk shows up even sooner.",
+      "Next I want to replace the remaining placeholder content with finished project writeups and keep polishing the project section as I build more things outside class and internships.",
+    links: [
+      {
+        label: "GitHub Repository",
+        url: "https://github.com/vidhu-hegde/Personal_website",
+      },
+    ],
     featured: true,
-    sortDate: "2026-01-01",
-    placeholderFields: ["links"],
-  },
-  {
-    slug: "ai-literacy-research",
-    title: "AI Literacy Research",
-    org: "Penn State AI Literacy Research Team",
-    dateRange: "May 2025-November 2025",
-    tags: ["PM", "Research"],
-    score: 8.9,
-    oneLiner: "A surprisingly satisfying mix of prompt data, rubrics, and making a 12-person team feel less tangled.",
-    problem:
-      "The project combined qualitative and quantitative data across a large team, which made it easy for analysis quality and coordination quality to drift apart.",
-    approach:
-      "I focused on research operations first: shared task tracking, clearer criteria for evaluating prompts, and a repeatable way to compare pre- and post-instruction performance.",
-    whatBuilt:
-      "A structured evaluation framework across five prompt-effectiveness criteria, aligned team tracking, and an analysis workflow that supported cleaner comparison of student prompt data.",
-    impact:
-      "The team produced stronger evidence of measurable improvement and could explain the learning outcomes with more consistency and confidence.",
-    reflection:
-      "I would add a sharper synthesis layer for communicating findings to non-research audiences so the takeaways travel more easily outside the project team.",
-    featured: true,
-    sortDate: "2025-11-01",
-    placeholderFields: ["links"],
-  },
-  {
-    slug: "electric-aircraft-infrastructure",
-    title: "Electric Aircraft Infrastructure",
-    org: "Academic Project",
-    dateRange: "August 2023-December 2023",
-    tags: ["PM", "Technical", "Research"],
-    score: 8.7,
-    oneLiner: "Part systems design, part product thinking, part asking what airport operations would look like if the rules changed.",
-    problem:
-      "Electric aircraft battery operations introduce a new workflow with unclear infrastructure needs, emerging stakeholder responsibilities, and uncertain turnaround constraints.",
-    approach:
-      "I framed the work around stakeholder research and operational modeling so the concept would be grounded in how airports, maintenance, and turnaround decisions might actually interact.",
-    whatBuilt:
-      "A rapid battery-swapping concept, a stakeholder-informed operating model, and a real-time IoT dashboard prototype to visualize battery management and aircraft turnaround status.",
-    impact:
-      "The project made the proposed battery workflow easier to reason about and gave the team a more concrete model for maintenance, battery tracking, and turnaround planning.",
-    reflection:
-      "[Placeholder] Add what I would change after testing the concept with more detailed airport or maintenance assumptions.",
-    featured: true,
-    sortDate: "2023-12-01",
-    placeholderFields: ["reflection", "links"],
-  },
-  {
-    slug: "biogas-iot-monitoring",
-    title: "Biogas IoT Monitoring",
-    org: "GPS Renewables",
-    dateRange: "Summer 2023",
-    tags: ["Technical", "Research"],
-    score: 8.5,
-    oneLiner: "The win here was making operational data feel usable instead of merely available.",
-    problem:
-      "Operational data was spread across multiple biogas plants, which limited real-time visibility and slowed responses when something needed attention.",
-    approach:
-      "I focused on turning scattered telemetry into a more usable monitoring system with dashboards, alerts, and reporting that matched operational needs.",
-    whatBuilt:
-      "Nine protected ThingsBoard dashboards, threshold-based alerts, and automated end-of-day reports covering visibility across six biogas plant operations.",
-    impact:
-      "Teams could respond to issues faster and had a clearer, more consistent operational picture across sites.",
-    reflection:
-      "[Placeholder] Add a more personal reflection on what I learned about designing technical tools for operational teams.",
-    featured: false,
-    sortDate: "2023-06-01",
-    placeholderFields: ["reflection", "links"],
+    sortDate: "2026-07-01",
   },
 ];
 

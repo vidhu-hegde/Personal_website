@@ -4,8 +4,7 @@ import { PortfolioTopBar } from "@/components/portfolio-top-bar";
 import { ProjectCard } from "@/components/project-card";
 import { projects } from "@/content/projects";
 import { buildMetadata } from "@/lib/metadata";
-
-const recentProjects = [...projects].sort((left, right) => right.sortDate.localeCompare(left.sortDate));
+const mockProject = projects[0];
 
 export const metadata: Metadata = buildMetadata({
   title: "Projects",
@@ -28,9 +27,7 @@ export default function ProjectsPage() {
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
-            {recentProjects.map((project) => (
-              <ProjectCard key={project.slug} project={project} variant="project" />
-            ))}
+            <ProjectCard project={mockProject} />
           </div>
         </div>
       </div>

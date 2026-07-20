@@ -1,71 +1,78 @@
+import { ArrowUpRight, BarChart3, Briefcase, Code2, FolderGit2, Lightbulb, Users } from "lucide-react";
 import Link from "next/link";
 
 import type { Project } from "@/content/projects";
-
-import { ScoreBadge } from "@/components/score-badge";
-import { TagPill } from "@/components/tag-pill";
-import { cn } from "@/lib/utils";
+import type { ProjectTag } from "@/content/projects";
 
 type ProjectCardProps = {
   project: Project;
-  variant?: "ranked" | "project";
 };
 
-export function ProjectCard({ project, variant = "ranked" }: ProjectCardProps) {
-  const hasPlaceholderCopy = Boolean(project.placeholderFields?.length);
-  const hasLinks = Boolean(project.links?.length);
+const projectAccent: Record<ProjectTag, string> = {
+  PM: "text-sky-900 bg-sky-100 border-sky-500/30",
+  Research: "text-violet-900 bg-violet-100 border-violet-500/30",
+  Technical: "text-emerald-900 bg-emerald-100 border-emerald-500/30",
+  Leadership: "text-rose-900 bg-rose-100 border-rose-500/30",
+};
+
+function ProjectIcon({ category }: { category: ProjectTag }) {
+  const className = `h-[18px] w-[18px] ${projectAccent[category].split(" ")[0]}`;
+
+  switch (category) {
+    case "PM":
+      return <Briefcase className={className} aria-hidden="true" />;
+    case "Research":
+      return <BarChart3 className={className} aria-hidden="true" />;
+    case "Technical":
+      return <Code2 className={className} aria-hidden="true" />;
+    case "Leadership":
+      return <Users className={className} aria-hidden="true" />;
+    default:
+      return <Lightbulb className={className} aria-hidden="true" />;
+  }
+}
+
+export function ProjectCard({ project }: ProjectCardProps) {
+  const githubLink = project.links?.find((link) => /github/i.test(link.label) || /github\.com/i.test(link.url));
+  const primaryTag = project.tags[0];
 
   return (
-    <Link
-      href={`/projects/${project.slug}`}
-      className="surface-link group flex h-full flex-col rounded-2xl border border-border bg-card p-6 shadow-card"
-    >
-      <div className="flex items-start justify-between gap-5">
-        <div className="space-y-3">
-          <div className="space-y-1">
-            <h3 className="text-xl font-semibold tracking-[-0.03em] text-foreground sm:text-2xl">{project.title}</h3>
-            <p className="text-sm text-muted">
-              {project.org} · {project.dateRange}
-            </p>
+    <article className="relative rounded-2xl border border-border bg-card p-5 shadow-card">
+      <div className="flex items-start gap-3 pr-8">
+        <div className="flex items-start gap-3">
+          <div
+            className={`mt-0.5 flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-full border ${projectAccent[primaryTag]}`}
+          >
+            <ProjectIcon category={primaryTag} />
           </div>
-          <p className="text-base leading-7 text-foreground">{project.oneLiner}</p>
+          <div className="space-y-2">
+            <h2 className="text-xl font-semibold tracking-[-0.03em] text-foreground sm:text-2xl">{project.title}</h2>
+            <p className="max-w-xl text-sm leading-6 text-muted sm:text-base">{project.oneLiner}</p>
+          </div>
         </div>
-        <ScoreBadge score={project.score} />
       </div>
 
-      <div className="mt-5 flex flex-wrap gap-2">
-        {project.tags.map((tag) => (
-          <TagPill key={tag} label={tag} />
-        ))}
-      </div>
-
-      <div className={cn("mt-6 space-y-4 border-t border-border pt-5")}>
-        <div>
-          <p className="text-xs font-medium tracking-[0.14em] text-muted uppercase">
-            {variant === "project" ? "Writeup preview" : "Hot take"}
-          </p>
-          <p className="mt-2 text-sm leading-6 text-muted">
-            {variant === "project"
-              ? hasLinks
-                ? `${project.problem} This page also has space for ${project.links?.length} attached resource${project.links?.length === 1 ? "" : "s"}.`
-                : `${project.problem} This page also has space for GitHub, PRD, demo, or deck links.`
-              : project.oneLiner}
-          </p>
-        </div>
-
-        {hasPlaceholderCopy ? (
-          <div className="rounded-xl bg-accent-soft px-3 py-2 text-xs text-accent-strong">
-            Needs final copy: {project.placeholderFields?.join(", ")}
-          </div>
+      <div className="mt-5 border-t border-border pt-4">
+        {githubLink ? (
+          <a
+            href={githubLink.url}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-3.5 py-1.5 text-sm font-medium text-foreground transition-colors hover:border-accent/30 hover:text-accent"
+          >
+            <FolderGit2 className="h-4 w-4" aria-hidden="true" />
+            GitHub
+          </a>
         ) : null}
       </div>
 
-      <div className="mt-6 flex items-center justify-between border-t border-border pt-5 text-sm text-muted">
-        <span>{variant === "project" ? "Open project writeup" : "Open ranked notes"}</span>
-        <span aria-hidden="true" className="text-accent">
-          ↗
-        </span>
-      </div>
-    </Link>
+      <Link
+        href={`/projects/${project.slug}`}
+        className="absolute right-5 bottom-5 inline-flex items-center justify-center text-accent transition-colors hover:text-accent-strong"
+        aria-label={`Open writeup for ${project.title}`}
+      >
+        <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+      </Link>
+    </article>
   );
 }
