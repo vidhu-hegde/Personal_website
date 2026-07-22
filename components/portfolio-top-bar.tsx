@@ -23,7 +23,7 @@ export function PortfolioTopBar({
   className,
 }: PortfolioTopBarProps) {
   return (
-    <div className={cn("w-full border-b border-border", className)}>
+    <div className={cn("sticky top-0 z-40 w-full border-b border-border bg-background/90 backdrop-blur-xl", className)}>
       <div className="mx-auto flex max-w-site flex-col gap-1.5 px-5 py-1.5 sm:px-6 lg:flex-row lg:items-center lg:justify-between">
         <Link href="/" className="text-sm font-medium text-foreground sm:text-[15px]">
           Vidhatri Hegde

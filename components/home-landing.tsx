@@ -121,7 +121,7 @@ export function HomeLanding() {
   const currentWord = words[wordIndex];
 
   return (
-    <div className="min-h-screen overflow-hidden bg-background">
+    <div className="min-h-screen overflow-x-clip bg-background">
       <h2 className="sr-only">
         Landing page with a two column hero, about text on the left and floating avatar animation on the right,
         ending in a get in touch card section
