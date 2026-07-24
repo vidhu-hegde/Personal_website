@@ -75,31 +75,13 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
           </div>
 
           <div className="grid gap-5 lg:grid-cols-2">
-            <article className="rounded-2xl border border-border bg-card p-6 shadow-card sm:p-7">
-              <p className="text-sm font-medium tracking-[0.12em] text-accent uppercase">Project overview</p>
-              <h2 className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-foreground">Why I built it</h2>
-              <p className="mt-4 text-base leading-8 text-muted">{project.problem}</p>
-            </article>
-
-            <article className="rounded-2xl border border-border bg-card p-6 shadow-card sm:p-7">
-              <p className="text-sm font-medium tracking-[0.12em] text-accent uppercase">Approach</p>
-              <h2 className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-foreground">How I approached it</h2>
-              <p className="mt-4 text-base leading-8 text-muted">{project.approach}</p>
-            </article>
-
-            <article className="rounded-2xl border border-border bg-card p-6 shadow-card sm:p-7">
-              <p className="text-sm font-medium tracking-[0.12em] text-accent uppercase">Build details</p>
-              <h2 className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-foreground">What is in the build</h2>
-              <p className="mt-4 text-base leading-8 text-muted">{project.whatBuilt}</p>
-            </article>
-
-            <article className="rounded-2xl border border-border bg-card p-6 shadow-card sm:p-7">
-              <p className="text-sm font-medium tracking-[0.12em] text-accent uppercase">Outcome</p>
-              <h2 className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-foreground">What changed and what is next</h2>
-              <div className="mt-4 space-y-4 text-base leading-8 text-muted">
-                <p>{project.impact}</p>
-                <p>{project.reflection}</p>
-              </div>
+            <article className="lg:col-span-2 rounded-2xl border border-border bg-card p-6 shadow-card sm:p-7">
+              <p className="text-sm font-medium tracking-[0.12em] text-accent uppercase">Writeup</p>
+              <h2 className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-foreground">Still working on it</h2>
+              <p className="mt-4 max-w-2xl text-base leading-8 text-muted">
+                I&apos;m still putting this writeup together. I&apos;ll add the full project story, decisions, and
+                build notes here soon.
+              </p>
             </article>
           </div>
         </div>
