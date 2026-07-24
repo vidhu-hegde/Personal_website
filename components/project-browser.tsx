@@ -113,7 +113,7 @@ export function ProjectBrowser({ projects, mode = "ranked", maxItems }: ProjectB
       {visibleProjects.length ? (
         <div className="grid gap-4 md:grid-cols-2">
           {visibleProjects.map((project) => (
-            <ProjectCard key={project.slug} project={project} variant={mode === "ranked" ? "ranked" : "project"} />
+            <ProjectCard key={project.slug} project={project} />
           ))}
         </div>
       ) : (
