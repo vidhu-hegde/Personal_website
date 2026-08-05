@@ -23,28 +23,32 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "portfolio-website",
-    title: "Portfolio Website",
+    slug: "blockbench",
+    title: "Blockbench - Context Weaver",
     org: "Independent build",
     dateRange: "Summer 2026",
     tags: ["Technical"],
     score: 9.0,
     oneLiner:
-      "A personal website I am shaping to feel more thoughtful and useful than a static resume page.",
+      "A Notion-style PM sandbox for exploring how content, context, and workflow can feel more connected inside a workspace.",
     problem:
-      "I wanted one place that could hold my experience, projects, and writing in a way that feels more personal than a PDF but still easy to scan.",
+      "I wanted to build something around the friction of managing work, content, and structure inside a workspace.",
     approach:
-      "I treated the site like a product and design exercise: simplify the structure, make each section easier to browse, and create room for deeper writeups when a project deserves more context.",
+      "I approached it like a product build: start with a clear user pain point, shape the workflow, and iterate on the experience from there.",
     whatBuilt:
-      "A Next.js portfolio with a custom landing page, experience cards, a project showcase, theme toggle support, and dedicated detail pages for longer project writeups.",
+      "An early product build backed by a GitHub repo, with the broader thinking and story documented separately in a Substack post.",
     impact:
-      "The site now feels more like an actual portfolio instead of a list of sections, and it creates a cleaner place to keep building project stories over time.",
+      "It gave me a concrete way to explore a workspace problem through both building and writing.",
     reflection:
-      "Next I want to replace the remaining placeholder content with finished project writeups and keep polishing the project section as I build more things outside class and internships.",
+      "I still want to keep refining both the product and the writeup as I learn more from the workflow and user problem.",
     links: [
       {
         label: "GitHub Repository",
-        url: "https://github.com/vidhu-hegde/Personal_website",
+        url: "https://github.com/vidhu-hegde/blockbench",
+      },
+      {
+        label: "Substack Post",
+        url: "https://careoappositus717660.substack.com/p/your-workspace-doesnt-have-a-content?r=2y508l",
       },
     ],
     featured: true,

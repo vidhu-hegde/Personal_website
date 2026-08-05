@@ -1,5 +1,4 @@
-import { ArrowUpRight, BarChart3, Briefcase, Code2, FolderGit2, Lightbulb, Users } from "lucide-react";
-import Link from "next/link";
+import { BarChart3, BookOpenText, Briefcase, Code2, FolderGit2, Lightbulb, Users } from "lucide-react";
 
 import type { Project } from "@/content/projects";
 import type { ProjectTag } from "@/content/projects";
@@ -34,7 +33,9 @@ function ProjectIcon({ category }: { category: ProjectTag }) {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   const githubLink = project.links?.find((link) => /github/i.test(link.label) || /github\.com/i.test(link.url));
+  const substackLink = project.links?.find((link) => /substack/i.test(link.label) || /substack\.com/i.test(link.url));
   const primaryTag = project.tags[0];
+  const iconBadgeClass = `flex h-7 w-7 items-center justify-center rounded-full border ${projectAccent[primaryTag]}`;
 
   return (
     <article className="relative rounded-2xl border border-border bg-card p-5 shadow-card">
@@ -52,7 +53,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
       </div>
 
-      <div className="mt-5 border-t border-border pt-4">
+      <div className="mt-5 flex items-center gap-2 border-t border-border pt-4">
         {githubLink ? (
           <a
             href={githubLink.url}
@@ -60,19 +61,27 @@ export function ProjectCard({ project }: ProjectCardProps) {
             rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-3.5 py-1.5 text-sm font-medium text-foreground transition-colors hover:border-accent/30 hover:text-accent"
           >
-            <FolderGit2 className="h-4 w-4" aria-hidden="true" />
+            <span className={iconBadgeClass}>
+              <FolderGit2 className="h-3.5 w-3.5" aria-hidden="true" />
+            </span>
             GitHub
           </a>
         ) : null}
-      </div>
 
-      <Link
-        href={`/projects/${project.slug}`}
-        className="absolute right-5 bottom-5 inline-flex items-center justify-center text-accent transition-colors hover:text-accent-strong"
-        aria-label={`Open writeup for ${project.title}`}
-      >
-        <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-      </Link>
+        {substackLink ? (
+          <a
+            href={substackLink.url}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-3.5 py-1.5 text-sm font-medium text-foreground transition-colors hover:border-accent/30 hover:text-accent"
+          >
+            <span className={iconBadgeClass}>
+              <BookOpenText className="h-3.5 w-3.5" aria-hidden="true" />
+            </span>
+            Substack
+          </a>
+        ) : null}
+      </div>
     </article>
   );
 }
