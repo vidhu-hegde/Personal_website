@@ -8,6 +8,7 @@ export type Project = {
   org: string;
   dateRange: string;
   tags: ProjectTag[];
+  icon?: "food";
   score: number;
   oneLiner: string;
   problem: string;
@@ -53,6 +54,35 @@ export const projects: Project[] = [
     ],
     featured: true,
     sortDate: "2026-07-01",
+  },
+  {
+    slug: "fork-fly",
+    title: "Fork-Fly",
+    org: "Independent build",
+    dateRange: "Summer 2026",
+    tags: ["Technical"],
+    icon: "food",
+    score: 8.8,
+    oneLiner:
+      "A product that brings together my love for food and my curiosity to explore new tech spaces like memories.ai here.",
+    problem:
+      "I wanted to explore how people discover and organize food choices without the experience feeling scattered or forgettable.",
+    approach:
+      "I treated it as a lightweight product exploration, using the build to test how a more opinionated food workflow could be structured.",
+    whatBuilt:
+      "An early GitHub-based product concept focused on the food discovery experience.",
+    impact:
+      "It gave me a concrete way to prototype a category-specific product idea and shape the user flow through building.",
+    reflection:
+      "I want to keep refining the product direction and the experience design as the concept becomes sharper.",
+    links: [
+      {
+        label: "GitHub Repository",
+        url: "https://github.com/vidhu-hegde/Fork-Fly",
+      },
+    ],
+    featured: true,
+    sortDate: "2026-08-01",
   },
 ];
 

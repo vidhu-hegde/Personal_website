@@ -4,7 +4,6 @@ import { PortfolioTopBar } from "@/components/portfolio-top-bar";
 import { ProjectCard } from "@/components/project-card";
 import { projects } from "@/content/projects";
 import { buildMetadata } from "@/lib/metadata";
-const mockProject = projects[0];
 
 export const metadata: Metadata = buildMetadata({
   title: "Projects",
@@ -27,7 +26,9 @@ export default function ProjectsPage() {
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
-            <ProjectCard project={mockProject} />
+            {projects.map((project) => (
+              <ProjectCard key={project.slug} project={project} />
+            ))}
           </div>
         </div>
       </div>
